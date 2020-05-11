@@ -47,7 +47,6 @@ end
 while running do
     drone.north()
     drone.east()
-    drone.setStatusText(drone.getOffset())
     --south()
     --west()
 end
