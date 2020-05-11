@@ -44,9 +44,4 @@ function drone.up()
     moveOne()
 end
 
-while running do
-    drone.north()
-    drone.east()
-    --south()
-    --west()
-end
+drone.up()
