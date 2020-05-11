@@ -14,10 +14,9 @@ end
 
 function moveOne()
     drone.setAcceleration(1)
-    while drone.getOffset() > 0 do
-        sleep(10)
+    while drone.getOffset() > 0.5 do
+        sleep(1)
     end
-    drone.setAcceleration(0)
 end
 
 function drone.north()
@@ -40,9 +39,15 @@ function drone.west()
     moveOne()
 end
 
+function drone.up()
+    drone.move(0, 0, 1)
+    moveOne()
+
+
 while running do
     drone.north()
     drone.east()
+    drone.setStatusText(drone.getOffset())
     --south()
     --west()
 end
