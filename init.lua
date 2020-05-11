@@ -4,6 +4,8 @@ local drone = component.proxy(component.list("drone")())
 
 local clock = os.clock
 
+local cx, cy, cz = 0, 0, 0
+
 function sleep(timeout)
     checkArg(1, timeout, "number", "nil")
     local deadline = computer.uptime() + (timeout or 0)
@@ -12,37 +14,24 @@ function sleep(timeout)
     end
 end
 
-function moveOne()
-    drone.setAcceleration(1)
-    while drone.getOffset() > 0.5 do
-        sleep(1)
+function move(tx, ty, tz)
+    local dx = tx - cx
+    local dy = ty - cy
+    local dz = tz - cz
+    drone.move(dx, dy, dz)
+    while drone.getOffset() > 0.7 or drone.getVelocity() > 0.7 do
+      computer.pullSignal(0.2)
+    end
+    cx, cy, cz = tx, ty, tz
+  end
+
+function main()
+    while running do
+        move(1, 0, 0)
+        move(0, 1, 0)
+        move(-1, 0, 0)
+        move(0, -1, 0)
     end
 end
 
-function drone.north()
-    drone.move(0, -1, 0)
-end
-
-function drone.east()
-    drone.move(1, 0, 0)
-end
-
-function drone.south()
-    drone.move(0, 1, 0)
-end
-
-function drone.west()
-    drone.move(-1, 0, 0)
-end
-
-function drone.up()
-    drone.move(0, 0, 1)
-end
-
-drone.up()
-drone.north()
-drone.setAcceleration(1)
-while drone.getOffset() > 0.5 do
-    sleep(1)
-end
-drone.setAcceleration(0)
+main()
