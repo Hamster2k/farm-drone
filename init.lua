@@ -42,7 +42,7 @@ end
 function drone.up()
     drone.move(0, 0, 1)
     moveOne()
-
+end
 
 while running do
     drone.north()
