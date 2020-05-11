@@ -6,6 +6,8 @@ local clock = os.clock
 
 local cx, cy, cz = 0, 0, 0
 
+local radius = 12
+
 function sleep(timeout)
     checkArg(1, timeout, "number", "nil")
     local deadline = computer.uptime() + (timeout or 0)
@@ -27,10 +29,27 @@ function move(tx, ty, tz)
 
 function main()
     while running do
-        move(1, 0, 0)
-        move(0, 1, 0)
-        move(-1, 0, 0)
-        move(0, -1, 0)
+        local i = 0
+        while i < radius do
+            move(i, 0, 0)
+            i = 0 + 1
+            move(0, i, 0)
+            i = 0 + 1
+            move(-i, 0, 0)
+            i = 0 + 1
+            move(0, -i, 0)
+            i = 0 + 1
+        end
+
+        while i > 0 do
+            move(i, 0, 0)
+            i = i - 1
+            move(0, i, 0)
+            i = 0 - 1
+            move(-i, 0, 0)
+            i = 0 - 1
+            move(0, -i, 0)
+        end
     end
 end
 
