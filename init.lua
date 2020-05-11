@@ -15,7 +15,7 @@ end
 function moveOne()
     drone.setAcceleration(1)
     while drone.getOffset() > 0 do
-        sleep(1)
+        sleep(10)
     end
     drone.setAcceleration(0)
 end
