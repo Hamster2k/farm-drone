@@ -36,6 +36,7 @@ function main()
             i = 0 + 1
             move(-i, 0, 0)
             move(0, 0, -i)
+            i = 0 + 1
         end
 
         while i > 0 do
@@ -44,6 +45,7 @@ function main()
             i = 0 - 1
             move(-i, 0, 0)
             move(0, 0, -i)
+            i = 0 - 1
         end
     end
 end
