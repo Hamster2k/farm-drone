@@ -21,27 +21,28 @@ end
 
 function drone.north()
     drone.move(0, -1, 0)
-    moveOne()
 end
 
 function drone.east()
     drone.move(1, 0, 0)
-    moveOne()
 end
 
 function drone.south()
     drone.move(0, 1, 0)
-    moveOne()
 end
 
 function drone.west()
     drone.move(-1, 0, 0)
-    moveOne()
 end
 
 function drone.up()
     drone.move(0, 0, 1)
-    moveOne()
 end
 
 drone.up()
+drone.north()
+drone.setAcceleration(1)
+while drone.getOffset() > 0.5 do
+    sleep(1)
+end
+drone.setAcceleration(0)
