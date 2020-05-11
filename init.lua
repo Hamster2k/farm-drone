@@ -33,22 +33,22 @@ function main()
         while i < radius do
             move(i, 0, 0)
             i = 0 + 1
-            move(0, i, 0)
+            move(0, 0, i)
             i = 0 + 1
             move(-i, 0, 0)
             i = 0 + 1
-            move(0, -i, 0)
+            move(0, 0, -i)
             i = 0 + 1
         end
 
         while i > 0 do
             move(i, 0, 0)
             i = i - 1
-            move(0, i, 0)
+            move(0, 0, i)
             i = 0 - 1
             move(-i, 0, 0)
             i = 0 - 1
-            move(0, -i, 0)
+            move(0, 0, -i)
         end
     end
 end
