@@ -20,14 +20,6 @@ local fieldDimensionY = 2
 local fieldCoordinateX = nil
 local fieldCoordinateY = nil
 
-function sleep(timeout)
-    checkArg(1, timeout, "number", "nil")
-    local deadline = computer.uptime() + (timeout or 0)
-    while deadline > computer.uptime()
-    do
-    end
-end
-
 function move(targetX, targetY, targetZ)
     drone.move(targetX, targetY, targetZ)
     while drone.getVelocity() > 0 do
