@@ -4,7 +4,7 @@ local sides = require("sides");
 
 local isRunning = true
 
-while isRunning
+while isRunning do
     robot.useUp(sides.front)
     robot.turnLeft()
     robot.useUp(sides.front)
