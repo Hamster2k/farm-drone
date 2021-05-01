@@ -12,7 +12,7 @@ local positionY = 0
 local inventory = 0
 
 --relative position of the lower left corner of the field
-local fieldLowerLeftCornerX = 3
+local fieldLowerLeftCornerX = 1
 local fieldLowerLeftCornerY = -2
 
 --dimensions of the field
