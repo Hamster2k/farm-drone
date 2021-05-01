@@ -47,21 +47,24 @@ function moveToNextFieldCoordinate()
         fieldCoordinateX = 0
         fieldCoordinateY = 0
         return moveHorizontal(fieldLowerLeftCornerX, fieldLowerLeftCornerY)
+    end
     
     if  fieldCoordinateX == fieldDimensionX and fieldCoordinateY == fieldDimensionY
     then
         fieldCoordinateX = 0
         fieldCoordinateY = 0
         return moveHorizontal(-fieldDimensionX, -fieldDimensionY)
+    end
     
     if fieldCoordinateX == fieldDimensionX
     then
         fieldCoordinateX = 0
         fieldCoordinateY = fieldCoordinateY + 1
         return moveHorizontal(-fieldDimensionX, 1)
+    end
     
     fieldCoordinateX = fieldCoordinateX + 1
-        return moveHorizontal(1, 0)
+    return moveHorizontal(1, 0)
     
 
 function main()
