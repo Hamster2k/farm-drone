@@ -8,6 +8,9 @@ local clock = os.clock
 local positionX = 0
 local positionY = 0
 
+--drone inventory
+local inventory = 0
+
 --relative position of the lower left corner of the field
 local fieldLowerLeftCornerX = 3
 local fieldLowerLeftCornerY = -2
@@ -58,10 +61,26 @@ function moveToNextFieldCoordinate()
     fieldCoordinateX = fieldCoordinateX + 1
     return moveHorizontal(1, 0)
 end
+
+function harvest()
+    drone.use(0)
+    inventory = inventory + drone.suck(0)
+end
+
+function dropOffInventory()
+    local currentX, currentY = positionX, positionY
+    moveHorizontal(-currentX, -currentY)
+    drop(0)
+    moveHorizontal(currentX, currentY)
+end
     
 function main()
     while running do
         moveToNextFieldCoordinate()
+        harvest()
+        if inventory > 128 then
+            dropOffInventory(0)
+        end
     end
 end
 
