@@ -9,12 +9,12 @@ local positionX = 0
 local positionY = 0
 
 --relative position of the lower left corner of the field
-local fieldLowerLeftCornerX = 3
-local fieldLowerLeftCornerY = 2
+local fieldLowerLeftCornerX = -2
+local fieldLowerLeftCornerY = 3
 
 --dimensions of the field
-local fieldDimensionX = 3
-local fieldDimensionY = 3
+local fieldDimensionX = 2
+local fieldDimensionY = 2
 
 --local field coordinates
 local fieldCoordinateX = nil
