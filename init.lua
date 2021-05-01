@@ -43,16 +43,19 @@ end
 
 function moveToNextFieldCoordinate()
     if fieldCoordinateX == nil
+    then
         fieldCoordinateX = 0
         fieldCoordinateY = 0
         return moveHorizontal(fieldLowerLeftCornerX, fieldLowerLeftCornerY)
     
     if  fieldCoordinateX == fieldDimensionX and fieldCoordinateY == fieldDimensionY
+    then
         fieldCoordinateX = 0
         fieldCoordinateY = 0
         return moveHorizontal(-fieldDimensionX, -fieldDimensionY)
     
     if fieldCoordinateX == fieldDimensionX
+    then
         fieldCoordinateX = 0
         fieldCoordinateY = fieldCoordinateY + 1
         return moveHorizontal(-fieldDimensionX, 1)
