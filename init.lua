@@ -65,8 +65,8 @@ function moveToNextFieldCoordinate()
     
     fieldCoordinateX = fieldCoordinateX + 1
     return moveHorizontal(1, 0)
+end
     
-
 function main()
     while running do
         moveToNextFieldCoordinate()
