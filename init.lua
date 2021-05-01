@@ -36,7 +36,7 @@ function move(targetX, targetY, targetZ)
 end
 
 function moveHorizontal(x, y)
-    move(x, 0, z)
+    move(x, 0, y)
     positionX = positionX + x
     positionY = positionY + y
 end
