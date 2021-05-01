@@ -31,7 +31,7 @@ end
 function move(targetX, targetY, targetZ)
     drone.move(targetX, targetY, targetZ)
     while drone.getVelocity() > 0 do
-      computer.pullSignal(0.2)
+      computer.pullSignal(1)
     end
 end
 
