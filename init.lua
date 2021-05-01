@@ -64,7 +64,8 @@ end
 
 function harvest()
     drone.use(0)
-    inventory = inventory + drone.suck(0)
+    local pickedUpItems = drone.suck(0)
+    inventory = inventory + pickedUpItems
 end
 
 function dropOffInventory()
