@@ -58,7 +58,7 @@ function moveToNextFieldCoordinate()
         return moveHorizontal(-fieldDimensionX, 1)
     
     fieldCoordinateX = fieldCoordinateX + 1
-        return moveHorizontal 
+        return moveHorizontal(1, 0)
     
 
 function main()
