@@ -71,7 +71,7 @@ function findCrop()
     end
 end
   
-  function harvest()
+function harvest()
 
     local direction = findCrop()
     local l, r, tx, tz
