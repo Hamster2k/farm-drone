@@ -62,16 +62,35 @@ function moveToNextFieldCoordinate()
     return moveHorizontal(1, 0)
 end
 
-function harvest()
-    drone.use(0)
-    drone.use(1)
-    drone.use(2)
-    drone.use(3)
-    drone.use(4)
-    drone.use(5)
-    while drone.suck(0) do
-        inventory = inventory + 1
+function findCrop()
+    for i=2, 5 do
+        local isBlock, type = drone.detect(i)
+        if type == "passable" then
+            return i
+        end
     end
+end
+  
+  function harvest()
+
+    local direction = findCrop()
+    local l, r, tx, tz
+    if direction == 2 then l,r,tx,tz = 4,5,0,-1 end
+    if direction == 3 then l,r,tx,tz = 5,4,0,1 end
+    if direction == 4 then l,r,tx,tz = 3,2,-1,0 end
+    if direction == 5 then l,r,tx,tz = 2,3,1,0 end
+
+    drone.use(direction)
+    for i=1, row.l do
+    move(cx+tx, cy, cz+tz)
+    colour("farming")
+    drone.use(l)
+    drone.use(r)
+    if i < tonumber(row.l) then
+        drone.use(direction)
+    end
+    end
+
 end
 
 function dropOffInventory()
