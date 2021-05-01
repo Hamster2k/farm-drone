@@ -4,9 +4,21 @@ local drone = component.proxy(component.list("drone")())
 
 local clock = os.clock
 
-local cx, cy, cz = 0, 0, 0
+--drone position
+local positionX = 0
+local positionY = 0
 
-local radius = 12
+--relative position of the lower left corner of the field
+local fieldLowerLeftCornerX = 3
+local fieldLowerLeftCornerY = 2
+
+--dimensions of the field
+local fieldDimensionX = 3
+local fieldDimensionY = 3
+
+--local field coordinates
+local fieldCoordinateX = nil
+local fieldCoordinateY = nil
 
 function sleep(timeout)
     checkArg(1, timeout, "number", "nil")
@@ -16,37 +28,42 @@ function sleep(timeout)
     end
 end
 
-function move(tx, ty, tz)
-    local dx = tx - cx
-    local dy = ty - cy
-    local dz = tz - cz
-    drone.move(dx, dy, dz)
-    while drone.getOffset() > 0.7 or drone.getVelocity() > 0.7 do
+function move(targetX, targetY, targetZ)
+    drone.move(targetX, targetY, targetZ)
+    while drone.getVelocity() > 0 do
       computer.pullSignal(0.2)
     end
-    cx, cy, cz = tx, ty, tz
-  end
+end
+
+function moveHorizontal(x, y)
+    move(x, 0, z)
+    positionX = positionX + x
+    positionY = positionY + y
+end
+
+function moveToNextFieldCoordinate()
+    if fieldCoordinateX == nil
+        fieldCoordinateX = 0
+        fieldCoordinateY = 0
+        return moveHorizontal(fieldLowerLeftCornerX, fieldLowerLeftCornerY)
+    
+    if  fieldCoordinateX == fieldDimensionX and fieldCoordinateY == fieldDimensionY
+        fieldCoordinateX = 0
+        fieldCoordinateY = 0
+        return moveHorizontal(-fieldDimensionX, -fieldDimensionY)
+    
+    if fieldCoordinateX == fieldDimensionX
+        fieldCoordinateX = 0
+        fieldCoordinateY = fieldCoordinateY + 1
+        return moveHorizontal(-fieldDimensionX, 1)
+    
+    fieldCoordinateX = fieldCoordinateX + 1
+        return moveHorizontal 
+    
 
 function main()
     while running do
-        local i = 0
-        while i < radius do
-            move(i, 0, 0)
-            move(0, 0, i)
-            i = i + 1
-            move(-i, 0, 0)
-            move(0, 0, -i)
-            i = i + 1
-        end
-
-        while i > 0 do
-            move(i, 0, 0)
-            move(0, 0, i)
-            i = i - 1
-            move(-i, 0, 0)
-            move(0, 0, -i)
-            i = i - 1
-        end
+        moveToNextFieldCoordinate()
     end
 end
 
