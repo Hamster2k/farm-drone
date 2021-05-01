@@ -64,6 +64,11 @@ end
 
 function harvest()
     drone.use(0)
+    drone.use(1)
+    drone.use(2)
+    drone.use(3)
+    drone.use(4)
+    drone.use(5)
     while drone.suck(0) do
         inventory = inventory + 1
     end
