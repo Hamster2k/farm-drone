@@ -9,8 +9,8 @@ local positionX = 0
 local positionY = 0
 
 --relative position of the lower left corner of the field
-local fieldLowerLeftCornerX = -2
-local fieldLowerLeftCornerY = 3
+local fieldLowerLeftCornerX = 3
+local fieldLowerLeftCornerY = -2
 
 --dimensions of the field
 local fieldDimensionX = 2
