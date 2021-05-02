@@ -68,9 +68,9 @@ function compareBlocks()
 end
 
 function initializeCoordinateArray()
-    for x = -radius, x < radius, 1 do
-        for y = -radius, y < radius, 1 do
-            for z = -radius, z < radius, 1 do
+    for x = -radius, radius, 1 do
+        for y = -radius, radius, 1 do
+            for z = -radius, radius, 1 do
                 if ((x * x) + (y * y) + (z * z)) <= radius * 2 then
                     table.insert(coordinateArray, {x, y, z})
                 end
