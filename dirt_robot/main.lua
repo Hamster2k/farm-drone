@@ -83,10 +83,12 @@ function main()
     initializeCoordinateArray()
     while true do
         for i, v in ipairs(coordinateArray) do
-            move(-v[0], -v[1], -v[2])
+            move(-v[1], -v[2], -v[3])
             if compareBlocks() then
                 robot.swingDown()
             end
         end
     end
 end
+
+main()
