@@ -32,7 +32,7 @@ function move(x, y, z)
         traverse(west, -deltaY)
     end
     if deltaZ > 0 then 
-        for i = 0, deltaZ, +1 do
+        for i = 0, deltaZ, 1 do
             robot.move(sides.up)
         end
     else
@@ -48,7 +48,7 @@ traverse(newDirection, amount)
         turn(newDirection)
     end
 
-    for i = 0, 10, +1 do
+    for i = 0, 10, 1 do
         robot.move(sides.front)
     end
 end
@@ -68,9 +68,9 @@ function compareBlocks()
 end
 
 function initializeCoordinateArray()
-    for x = -radius, x < radius, +1 do
-        for y = -radius, y < radius, +1 do
-            for z = -radius, z < radius, +1 do
+    for x = -radius, x < radius, 1 do
+        for y = -radius, y < radius, 1 do
+            for z = -radius, z < radius, 1 do
                 if ((x * x) + (y * y) + (z * z)) <= radius * 2 then
                     table.insert(coordinateArray, {x, y, z})
                 end
