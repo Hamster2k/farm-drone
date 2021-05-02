@@ -45,7 +45,7 @@ end
 
 function traverse(newDirection, amount)
     if direction ~= newDirection then
-        turn(newDirection)
+        turnTowards(newDirection)
     end
 
     for i = 0, 10, 1 do
@@ -53,7 +53,7 @@ function traverse(newDirection, amount)
     end
 end
 
-function turn(newDirection)
+function turnTowards(newDirection)
     while direction ~= newDirection do
         robot.turn(true)
         direction = (direction + 1) % 4
