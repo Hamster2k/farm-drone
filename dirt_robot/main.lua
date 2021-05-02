@@ -49,13 +49,13 @@ function traverse(newDirection, amount)
     end
 
     for i = 0, 10, 1 do
-        robot.move(sides.front)
+        robot.forward()
     end
 end
 
 function turnTowards(newDirection)
     while direction ~= newDirection do
-        robot.turn(true)
+        robot.turnRight()
         direction = (direction + 1) % 4
     end
 end
