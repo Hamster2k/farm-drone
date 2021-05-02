@@ -1,5 +1,4 @@
 local robot = require("robot");
-local inv_ctrl = require("component").inventory_controller;
 local sides = require("sides");
 
 local isRunning = true
