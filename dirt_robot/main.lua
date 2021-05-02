@@ -44,7 +44,7 @@ function move(x, y, z)
 end
 
 traverse(newDirection, amount)
-    if direction != newDirection then
+    if direction ~= newDirection then
         turn(newDirection)
     end
 
@@ -54,7 +54,7 @@ traverse(newDirection, amount)
 end
 
 function turn(newDirection)
-    while direction != newDirection do
+    while direction ~= newDirection do
         robot.turn(true)
         direction = (direction + 1) % 4
     end
