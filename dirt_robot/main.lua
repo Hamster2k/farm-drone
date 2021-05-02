@@ -1,5 +1,6 @@
 local robot = require("robot");
 local sides = require("sides");
+local computer = require("computer");
 
 local locationX, locationY, locationZ = 0, 0, 0
 
@@ -33,14 +34,15 @@ function move(x, y, z)
     end
     if deltaZ > 0 then 
         for i = 0, deltaZ, 1 do
-            robot.move(sides.up)
+            robot.up()
         end
     else
         for i = 0, deltaZ, -1 do
-            robot.move(sides.down)
+            robot.down()
         end
     end
-        
+
+    locationX, locationY, locationZ = x, y, z
 end
 
 function traverse(newDirection, amount)
@@ -63,6 +65,7 @@ end
 function compareBlocks()
     robot.select(16)
     local isBlock = robot.detect(sides.down)
+    computer.beep()
     robot.select(1)
     return isBlock
 end
@@ -83,7 +86,7 @@ function main()
     initializeCoordinateArray()
     while true do
         for i, v in ipairs(coordinateArray) do
-            move(-v[1], -v[2], -v[3])
+            move(v[1], v[2], v[3])
             if compareBlocks() then
                 robot.swingDown()
             end
