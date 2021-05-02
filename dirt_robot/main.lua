@@ -43,7 +43,7 @@ function move(x, y, z)
         
 end
 
-traverse(newDirection, amount)
+function traverse(newDirection, amount)
     if direction ~= newDirection then
         turn(newDirection)
     end
@@ -89,3 +89,4 @@ function main()
             end
         end
     end
+end
